@@ -12,9 +12,11 @@ const Categories = () => {
                 paddingTop: 10,
             }}>
             {/* Categories Card */}
-            <CategoryCard imgUrl='https://links.papareact.com/wru' title="Testing"></CategoryCard>
-            <CategoryCard imgUrl='https://links.papareact.com/wru' title="Testing"></CategoryCard>
-            <CategoryCard imgUrl='https://links.papareact.com/wru' title="Testing"></CategoryCard>
+            <CategoryCard imgUrl='https://links.papareact.com/gn7' title="Testing"></CategoryCard>
+            <CategoryCard imgUrl='https://links.papareact.com/gn7' title="Testing"></CategoryCard>
+            <CategoryCard imgUrl='https://links.papareact.com/gn7' title="Testing"></CategoryCard>
+            <CategoryCard imgUrl='https://links.papareact.com/gn7' title="Testing"></CategoryCard>
+            <CategoryCard imgUrl='https://links.papareact.com/gn7' title="Testing"></CategoryCard>
         </ScrollView>
     )
 }

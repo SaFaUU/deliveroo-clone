@@ -1,11 +1,19 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 
-const CategoryCard = ({ imgURL, title }) => {
+const CategoryCard = ({ imgUrl, title }) => {
     return (
-        <View>
-            <Text>{title}</Text>
-        </View>
+        <TouchableOpacity className="mr-2 relative">
+            <Image
+                source={{
+                    uri: imgUrl
+                }}
+                className="h-20 w-20 rounded"
+            ></Image>
+            <Text
+                className="absolute bottom-1 left-1 text-white font-bold"
+            >{title}</Text>
+        </TouchableOpacity>
     )
 }
 

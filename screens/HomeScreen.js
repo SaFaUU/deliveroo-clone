@@ -4,6 +4,7 @@ import { Platform, StatusBar } from "react-native";
 import { useNavigation } from '@react-navigation/native'
 import { ChevronDownIcon, UserIcon, AdjustmentsVerticalIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline'
 import Categories from '../components/Categories';
+import FeaturedRow from '../components/FeaturedRow';
 
 
 
@@ -61,7 +62,24 @@ const HomeScreen = () => {
             >
                 {/* Categories */}
                 <Categories></Categories>
-                {/* Featured */}
+                {/* Featured Rows*/}
+                <FeaturedRow
+                    id="123"
+                    title="Featured"
+                    description="Paid placements from our partners"
+                ></FeaturedRow>
+                {/* Tasty Discounts*/}
+                <FeaturedRow
+                    id="1235"
+                    title="Featured"
+                    description="Paid placements from our partners"
+                ></FeaturedRow>
+                {/* Offers Near You*/}
+                <FeaturedRow
+                    id="1235"
+                    title="Featured"
+                    description="Paid placements from our partners"
+                ></FeaturedRow>
             </ScrollView>
         </SafeAreaView>
     )
