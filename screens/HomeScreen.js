@@ -1,15 +1,14 @@
-import { StyleSheet, View, Text, SafeAreaView, Image, TextInput, ScrollView } from 'react-native'
-import React, { useLayoutEffect } from 'react'
-import { Platform, StatusBar } from "react-native";
+import { StyleSheet, View, Text, SafeAreaView, Image, TextInput, ScrollView, Platform, StatusBar } from 'react-native'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { ChevronDownIcon, UserIcon, AdjustmentsVerticalIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline'
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
-
-
+import client from '../sanity';
 
 const HomeScreen = () => {
     const navigation = useNavigation()
+    const [featuredCategories, setFeaturedCategories] = useState([])
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -17,6 +16,19 @@ const HomeScreen = () => {
         })
     }, [])
 
+    useEffect(() => {
+        client.fetch(`*[_type == "featured"]{
+            ...,
+              restaurants[]->{
+                ...,
+                dishes[]->
+                } 
+            }`)
+            .then((data) => {
+                setFeaturedCategories(data)
+            })
+    }, [])
+    // console.log(featuredCategories)
     const styles = StyleSheet.create({
         container: {
             paddingTop: Platform.OS == "android" ? StatusBar.currentHeight : 0,
@@ -63,23 +75,13 @@ const HomeScreen = () => {
                 {/* Categories */}
                 <Categories></Categories>
                 {/* Featured Rows*/}
-                <FeaturedRow
-                    id="123"
-                    title="Featured"
-                    description="Paid placements from our partners"
-                ></FeaturedRow>
-                {/* Tasty Discounts*/}
-                <FeaturedRow
-                    id="1235"
-                    title="Featured"
-                    description="Paid placements from our partners"
-                ></FeaturedRow>
-                {/* Offers Near You*/}
-                <FeaturedRow
-                    id="1235"
-                    title="Featured"
-                    description="Paid placements from our partners"
-                ></FeaturedRow>
+                {featuredCategories?.map((category) =>
+                    <FeaturedRow
+                        key={category._id}
+                        id={category._id}
+                        title={category.name}
+                        description={category.short_description}
+                    ></FeaturedRow>)}
             </ScrollView>
         </SafeAreaView>
     )
