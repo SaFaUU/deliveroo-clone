@@ -85,7 +85,7 @@ export default function RestaurantScreen() {
                         key={dish._id}
                         id={dish._id}
                         name={dish.name}
-                        desciption={dish.short_description}
+                        description={dish.short_description}
                         price={dish.price}
                         image={dish.image}
                     >
